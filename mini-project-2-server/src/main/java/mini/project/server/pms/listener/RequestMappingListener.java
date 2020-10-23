@@ -29,12 +29,10 @@ public class RequestMappingListener implements ApplicationContextListener {
   @SuppressWarnings("unchecked")
   @Override
   public void contextInitialized(Map<String,Object> context) {
-    // 옵저버가 작업한 결과를 맵에서 꺼낸다.
     Login login = (Login) context.get("login");
     List<Type> typeList = (List<Type>) context.get("typeList");
     List<Test> testList = (List<Test>) context.get("testList");
     List<Member> memberList = (List<Member>) context.get("memberList");
-    //    List<Task> taskList = (List<Task>) context.get("taskList");
 
     MemberListCommand memberListCommand = new MemberListCommand(memberList, login);
     context.put("/signUp", new SignUpCommand(memberList));
@@ -45,15 +43,8 @@ public class RequestMappingListener implements ApplicationContextListener {
 
     context.put("/test/start", new TestStartCommand(testList,typeList,login));
     context.put("/test/result", new TestResultCommand(testList,typeList,login));
-    //    context.put("/board/detail", new BoardDetailCommand(boardList));
-    //    context.put("/board/update", new BoardUpdateCommand(boardList));
-    //    context.put("/board/delete", new BoardDeleteCommand(boardList));
     context.put("/login", new LoginCommand(login, memberList));
     context.put("/logout", new LogoutCommand(login));
-    //    context.put("/board/list", new BoardListCommand(boardList));
-    //    context.put("/board/detail", new BoardDetailCommand(boardList));
-    //    context.put("/board/update", new BoardUpdateCommand(boardList));
-    //    context.put("/board/delete", new BoardDeleteCommand(boardList));
 
     TypeListCommand typeListCommand = new TypeListCommand(typeList, login);
     context.put("/type/add", new TypeAddCommand(typeList,login));
@@ -61,22 +52,6 @@ public class RequestMappingListener implements ApplicationContextListener {
     context.put("/type/detail", new TypeDetailCommand(typeList, login));
     context.put("/type/update", new TypeUpdateCommand(typeList, login));
     context.put("/type/delete", new TypeDeleteCommand(typeList, login));
-    //
-    //    context.put("/project/add", new ProjectAddCommand(projectList, memberListCommand));
-    //    context.put("/project/list", new ProjectListCommand(projectList));
-    //    context.put("/project/detail", new ProjectDetailCommand(projectList));
-    //    context.put("/project/update", new ProjectUpdateCommand(projectList, memberListCommand));
-    //    context.put("/project/delete", new ProjectDeleteCommand(projectList));
-    //
-    //    context.put("/task/add", new TaskAddCommand(taskList, memberListCommand));
-    //    context.put("/task/list", new TaskListCommand(taskList));
-    //    context.put("/task/detail", new TaskDetailCommand(taskList));
-    //    context.put("/task/update", new TaskUpdateCommand(taskList, memberListCommand));
-    //    context.put("/task/delete", new TaskDeleteCommand(taskList));
-    //
-    //    context.put("/hello", new HelloCommand());
-    //
-    //    context.put("/calc", new CalculatorCommand());
     context.put("/help", new HelpCommand());
   }
 

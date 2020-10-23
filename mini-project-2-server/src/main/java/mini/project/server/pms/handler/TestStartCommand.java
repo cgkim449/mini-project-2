@@ -94,25 +94,12 @@ public class TestStartCommand implements Command {
       Thread.currentThread().sleep(delay);
       out.println(" ");
 
-      //      out.print("검사 결과 집계 중");
-      //      out.println(" ");
-      //      Thread.currentThread().sleep(delay);
-      //      out.print(".");
-      //      out.println(" ");
-      //      Thread.currentThread().sleep(delay);
-      //      out.print(".");
-      //      out.println(" ");
-      //      Thread.currentThread().sleep(delay);
-      //      out.print(".");
-      //     out.println(" ");
       out.println("[테스트 결과 조회]");
       out.print("아무 키나 눌러주세요.");
       Prompt.inputString(" ", out, in);
 
       test.setTotalScore(test.getFirstAnswer(), test.getSecondAnswer(), test.getThirdAnswer(),
           test.getFourthAnswer(), test.getFifthAnswer());
-      //      test.totalScore = test.getFirstAnswer() + test.getSecondAnswer() + test.getThirdAnswer() +
-      //          test.getFourthAnswer() + test.getFifthAnswer();
 
       out.printf("%s님의 검사결과입니다.\n", login.getName());
       out.println(" ");
