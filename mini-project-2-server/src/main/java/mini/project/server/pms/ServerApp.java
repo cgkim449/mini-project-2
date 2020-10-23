@@ -112,7 +112,7 @@ public class ServerApp {
         PrintWriter out = new PrintWriter(socket.getOutputStream())) {
 
       String request = in.readLine();
-      if (request.equalsIgnoreCase("init")) {
+      if (request.equals("init")) {
         out.println(" __       __  ___   \r\n" +
             "|__)  __ |__)  |  | \r\n" +
             "|__)     |__)  |  | \r");

@@ -10,6 +10,7 @@ public class ClientApp {
 
   static String host;
   static int port;
+  static int init = 0;
 
   public static void main(String[] args) {
 
@@ -24,7 +25,10 @@ public class ClientApp {
 
 
     while (true) {
-      request("init");
+      if (init == 0) {
+        init++;
+        request("init");
+      }
       String input = Prompt.inputString("명령 > ");
       if (input.equalsIgnoreCase("quit")) {
         break;
