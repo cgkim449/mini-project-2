@@ -12,13 +12,7 @@ public class ClientApp {
   static int port;
 
   public static void main(String[] args) {
-    System.out.println(" __       __  ___   \r\n" +
-        "|__)  __ |__)  |  | \r\n" +
-        "|__)     |__)  |  | 에 오신 것을 환영합니다.\r\n");
-    System.out.println("회원가입 : /signUp");
-    System.out.println("테스트 진행 : /login");
-    System.out.println("가이드 페이지 : /help");
-    System.out.println();
+
     if (args.length != 2) {
       System.out.println("프로그램 사용법:");
       System.out.println("  java -cp ... ClientApp 서버주소 포트번호");
@@ -30,33 +24,36 @@ public class ClientApp {
 
 
     while (true) {
+      request("init");
       String input = Prompt.inputString("명령 > ");
-      if (input.equalsIgnoreCase("quit"))
+      if (input.equalsIgnoreCase("quit")) {
         break;
-
+      }
       request(input);
 
-      if (input.equalsIgnoreCase("stop"))
+      if (input.equalsIgnoreCase("stop")) {
         break;
+      }
     }
     System.out.println("안녕!");
 
 
   }
 
-  private static void request(String message) {
+  private static void request(String input) {
     // 클라이언트가 서버에 stop 명령을 보내면 다음 변수를 true로 변경한다.
     boolean stop = false;
 
     try (Socket socket = new Socket(host, port);
         PrintWriter out = new PrintWriter(socket.getOutputStream());
         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
-      out.println(message);
+
+      out.println(input);
       out.flush();
 
       receiveResponse(out, in);
 
-      if (message.equalsIgnoreCase("stop")) {
+      if (input.equalsIgnoreCase("stop")) {
         stop = true;
       }
     } catch (Exception e) {

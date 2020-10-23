@@ -41,6 +41,8 @@ public class MemberDetailCommand implements Command {
       out.printf("전화: %s\n", member.getTel());
       out.printf("등록일: %s\n", member.getRegisteredDate());
       out.printf("관리자 권한: %d", member.getAdmin());
+      out.println();
+      out.flush();
 
     } catch (Exception e) {
       out.printf("작업 처리 중 오류 발생! - %s\n", e.getMessage());

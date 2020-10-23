@@ -112,6 +112,20 @@ public class ServerApp {
         PrintWriter out = new PrintWriter(socket.getOutputStream())) {
 
       String request = in.readLine();
+      if (request.equalsIgnoreCase("init")) {
+        out.println(" __       __  ___   \r\n" +
+            "|__)  __ |__)  |  | \r\n" +
+            "|__)     |__)  |  | 에 오신 것을 환영합니다.\r");
+        out.println(" ");
+        out.println("회원가입 : /signUp");
+        out.println("테스트 진행 : /login");
+        out.println("가이드 페이지 : /help");
+        out.println(" ");
+        out.println();
+        out.flush();
+        return;
+      }
+
 
       if (request.equalsIgnoreCase("stop")) {
         stop = true;
@@ -120,6 +134,13 @@ public class ServerApp {
         out.flush();
         return;
       }
+
+      //      if (request.equalsIgnoreCase(".")) {
+      //        out.println(".");
+      //        out.println();
+      //        out.flush();
+      //        return;
+      //      }
 
       Command command = (Command) context.get(request);
       if (command != null) {

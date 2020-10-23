@@ -14,6 +14,7 @@ public class MemberUpdateCommand implements Command {
 
   public MemberUpdateCommand(List<Member> list, Login login) {
     this.memberList = list;
+    this.login = login;
   }
 
   @Override

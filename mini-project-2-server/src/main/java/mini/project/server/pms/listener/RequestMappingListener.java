@@ -29,14 +29,15 @@ public class RequestMappingListener implements ApplicationContextListener {
   @SuppressWarnings("unchecked")
   @Override
   public void contextInitialized(Map<String,Object> context) {
+
     Login login = (Login) context.get("login");
     List<Type> typeList = (List<Type>) context.get("typeList");
     List<Test> testList = (List<Test>) context.get("testList");
     List<Member> memberList = (List<Member>) context.get("memberList");
 
-    MemberListCommand memberListCommand = new MemberListCommand(memberList, login);
     context.put("/signUp", new SignUpCommand(memberList));
-    context.put("/member/list", memberListCommand);
+
+    context.put("/member/list", new MemberListCommand(memberList, login));
     context.put("/member/detail", new MemberDetailCommand(memberList, login));
     context.put("/member/update", new MemberUpdateCommand(memberList, login));
     context.put("/member/delete", new MemberDeleteCommand(memberList, login));
@@ -46,9 +47,8 @@ public class RequestMappingListener implements ApplicationContextListener {
     context.put("/login", new LoginCommand(login, memberList));
     context.put("/logout", new LogoutCommand(login));
 
-    TypeListCommand typeListCommand = new TypeListCommand(typeList, login);
     context.put("/type/add", new TypeAddCommand(typeList,login));
-    context.put("/type/list", typeListCommand);
+    context.put("/type/list", new TypeListCommand(typeList, login));
     context.put("/type/detail", new TypeDetailCommand(typeList, login));
     context.put("/type/update", new TypeUpdateCommand(typeList, login));
     context.put("/type/delete", new TypeDeleteCommand(typeList, login));

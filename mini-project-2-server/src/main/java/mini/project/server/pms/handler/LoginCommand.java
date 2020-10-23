@@ -85,10 +85,7 @@ public class LoginCommand implements Command {
         out.flush();
         login.setName(member.getName());
         login.setAdmin(1);
-
       }
-
-
     } catch (Exception e) {
       out.printf("작업 처리 중 오류 발생! - %s\n", e.getMessage());
     }
