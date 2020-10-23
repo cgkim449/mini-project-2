@@ -112,7 +112,8 @@ public class ServerApp {
         PrintWriter out = new PrintWriter(socket.getOutputStream())) {
 
       String request = in.readLine();
-      if (request.equals("init")) {
+
+      if (request.equals("init")) { // 서버 초기화면 처음에만 딱 한번 송신
         out.println(" __       __  ___   \r\n" +
             "|__)  __ |__)  |  | \r\n" +
             "|__)     |__)  |  | \r");
@@ -134,13 +135,6 @@ public class ServerApp {
         out.flush();
         return;
       }
-
-      //      if (request.equalsIgnoreCase(".")) {
-      //        out.println(".");
-      //        out.println();
-      //        out.flush();
-      //        return;
-      //      }
 
       Command command = (Command) context.get(request);
       if (command != null) {

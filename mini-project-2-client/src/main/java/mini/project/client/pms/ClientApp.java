@@ -25,10 +25,12 @@ public class ClientApp {
 
 
     while (true) {
-      if (init == 0) {
+
+      if (init == 0) { // 서버 초기화면 처음에만 딱 한번 수신
         init++;
         request("init");
       }
+
       String input = Prompt.inputString("명령 > ");
       if (input.equalsIgnoreCase("quit")) {
         break;

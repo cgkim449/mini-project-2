@@ -23,6 +23,12 @@ public class TestStartCommand implements Command {
   @Override
   public void execute(PrintWriter out, BufferedReader in) {
     try {
+      if (login.getAdmin() == 3) {
+        out.println("검사를 하시려면 로그인을 해주세요.");
+        out.println(" ");
+        out.println();
+        out.flush();
+      }
       Test test = new Test();
       test.setName(login.getName());
 
@@ -94,16 +100,6 @@ public class TestStartCommand implements Command {
       Thread.sleep(delay);
       out.println(" ");
 
-      out.println("검사 집계 중");
-      out.println(".");
-      Thread.currentThread().sleep(delay);
-      out.println(".");
-      Thread.currentThread().sleep(delay);
-      out.println(".");
-      Thread.currentThread().sleep(delay);
-      out.println(".");
-      out.println(" ");
-
       out.println("[테스트 결과 조회]");
       out.print("아무 키나 눌러주세요.");
       Prompt.inputString(" ", out, in);
@@ -122,12 +118,19 @@ public class TestStartCommand implements Command {
             " III  NN  NNN   TTT   PP      \r\n" +
             "IIIII NN   NN   TTT   PP \r");
         out.println(" ");
+        out.println("----------------------------------------------------------------------------");
         out.printf("유형 : %s\n",type.getName());
+        out.println("----------------------------------------------------------------------------");
         out.printf("설명 : %s\n",type.getIntroduction());
+        out.println("----------------------------------------------------------------------------");
         out.printf("장점 : %s\n",type.getStrength());
+        out.println("----------------------------------------------------------------------------");
         out.printf("약점 : %s\n",type.getWeakness());
+        out.println("----------------------------------------------------------------------------");
         out.printf("연애 : %s\n",type.getRomance());
+        out.println("----------------------------------------------------------------------------");
         out.printf("우정 : %s\n",type.getFriendship());
+        out.println("----------------------------------------------------------------------------");
       } else if (5 < test.getTotalScore() && test.getTotalScore() < 10) {
         Type type = findByNo(2);
         out.println("EEEEEEE  SSSSS  TTTTTTT PPPPPP \r\n" +
