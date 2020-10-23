@@ -3,7 +3,7 @@ package mini.project.server.pms.domain;
 public class Login {
 
   private String name;
-  private int admin;
+  private int admin =3;
   private int adminPw;
 
   public String getName() {

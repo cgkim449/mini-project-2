@@ -16,6 +16,14 @@ public class LogoutCommand implements Command {
   @Override
   public void execute(PrintWriter out, BufferedReader in) {
     try {
+      if (login.getAdmin() == 3) {
+        out.println("이미 로그아웃 되어있습니다.");
+        out.println(" ");
+        out.println();
+        out.flush();
+        return;
+      }
+
       String request = Prompt.inputString("로그아웃하시겠습니까? (y/N) : ", out, in);
       out.println(" ");
 

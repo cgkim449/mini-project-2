@@ -23,15 +23,15 @@ public class LoginCommand implements Command {
 
       Member member;
 
-      //      out.println("[로그인] ");
-      //      if (login.getAdmin() < 2 && login.getAdmin() >= 0) {
-      //        out.println("이미 로그인 되어있습니다.");
-      //        out.println();
-      //        out.flush();
-      //        return;
-      //      }
+      out.println("[로그인] ");
 
-      //      login.setAdminPw(1111);
+      if (login.getAdmin() < 2 && login.getAdmin() >= 0) {
+        out.println("이미 로그인 되어있습니다.");
+        out.println(" ");
+        out.println();
+        out.flush();
+        return;
+      }
 
       while (true) {
         String name = Prompt.inputString("아이디를 입력해주세요 : ", out, in);
@@ -53,7 +53,6 @@ public class LoginCommand implements Command {
       }
 
 
-      //      if (member.getAdmin() == 0) {
       while(true) {
         if (member.getPassword() != Prompt.inputInt("비밀번호 : ", out, in)) {
           String response = Prompt.inputString(
@@ -71,7 +70,6 @@ public class LoginCommand implements Command {
         }
       }
       out.println(" ");
-      //        login.setName("bitcamp");
       if (member.getName().equalsIgnoreCase("bitcamp")) {
         out.println("관리자님 안녕하세요.");
         out.println(" ");
@@ -89,14 +87,6 @@ public class LoginCommand implements Command {
         login.setAdmin(1);
 
       }
-      //      } else {
-      //        login.setName(Prompt.inputString("성함을 입력해주세요 : ", out, in));
-      //        out.println(" ");
-      //        out.printf("%s님 안녕하세요. '/test/start'로 B-BTI검사를 시작하세요.\n", member.getName());
-      //        out.println(" ");
-      //        out.println();
-      //        out.flush();
-      //      }
 
 
     } catch (Exception e) {
