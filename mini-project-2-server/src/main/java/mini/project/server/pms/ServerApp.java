@@ -115,7 +115,7 @@ public class ServerApp {
       if (request.equalsIgnoreCase("init")) {
         out.println(" __       __  ___   \r\n" +
             "|__)  __ |__)  |  | \r\n" +
-            "|__)     |__)  |  | 에 오신 것을 환영합니다.\r");
+            "|__)     |__)  |  | \r");
         out.println(" ");
         out.println("회원가입 : /signUp");
         out.println("테스트 진행 : /login");
